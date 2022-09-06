@@ -25,36 +25,43 @@ const Weather = () => {
   return (
     <>
       <div className={styles.container}>
-      <div >
-        <select className={styles.select} onChange={handleChange}>
-          <option value="Ho Chi Minh">Ho Chi Minh</option>
-          <option value="Singapore">Singapore</option>
-          <option value="Kuala Lumpur">Kuala Lumpur</option>
-          <option value="Tokyo">Tokyo</option>
-          <option value="Athens">Athens</option>
-        </select>
-      </div>
-      <div className={styles.heading}>
-      <h2>Current Weather:</h2>
-      <h2>Next 3 days</h2>
-      </div>
-      <div className={styles.days}>
-        {select?.map((ele, index) => {
-          if (index == 0) {
+        <div>
+          <select className={styles.select} onChange={handleChange}>
+            <option value="Ho Chi Minh">Ho Chi Minh</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Kuala Lumpur">Kuala Lumpur</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="Athens">Athens</option>
+          </select>
+        </div>
+        <div className={styles.heading}>
+          <h2>Current Weather:</h2>
+          <h2>Next 3 days:</h2>
+        </div>
+        <div className={styles.days}>
+          {select?.map((ele, index) => {
+            if (index == 0) {
+              return (
+                <div key={ele.dt}>
+                  <p>{ele.main.temp}°C</p>
+                  <img
+                    src="https://st.depositphotos.com/1007168/1249/i/600/depositphotos_12492703-stock-photo-summer-hot-sun.jpg"
+                    alt=""
+                  />
+                </div>
+              );
+            }
             return (
               <div key={ele.dt}>
                 <p>{ele.main.temp}°C</p>
+                <img
+                  src="https://st.depositphotos.com/1007168/1249/i/600/depositphotos_12492703-stock-photo-summer-hot-sun.jpg"
+                  alt=""
+                />
               </div>
             );
-          }
-          return (
-            <div key={ele.dt}>
-              <p>{ele.dt_txt}</p>
-              <p>{ele.main.temp}°C</p>
-            </div>
-          );
-        })}
-      </div>
+          })}
+        </div>
       </div>
     </>
   );
