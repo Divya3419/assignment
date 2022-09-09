@@ -42,22 +42,36 @@ const Weather = () => {
           {select?.map((ele, index) => {
             if (index == 0) {
               return (
-                <div key={ele.dt}>
+                <div key={ele.dt} className={styles.box}>
+                  <p>{ele.dt_txt}</p>
                   <p>{ele.main.temp}°C</p>
-                  <img
-                    src="https://st.depositphotos.com/1007168/1249/i/600/depositphotos_12492703-stock-photo-summer-hot-sun.jpg"
-                    alt=""
-                  />
+                  {ele.weather.map((ic) => {
+                    return (
+                      <div key={ic.id}>
+                        <img
+                          src={`https://openweathermap.org/img/w/${ic.icon}.png`}
+                          alt=""
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               );
             }
             return (
-              <div key={ele.dt}>
+              <div key={ele.dt} className={styles.box}>
+                <p>{ele.dt_txt}</p>
                 <p>{ele.main.temp}°C</p>
-                <img
-                  src="https://st.depositphotos.com/1007168/1249/i/600/depositphotos_12492703-stock-photo-summer-hot-sun.jpg"
-                  alt=""
-                />
+                {ele.weather.map((ic) => {
+                  return (
+                    <div key={ic.id}>
+                      <img
+                        src={`https://openweathermap.org/img/w/${ic.icon}.png`}
+                        alt=""
+                      />
+                    </div>
+                  );
+                })}
               </div>
             );
           })}
